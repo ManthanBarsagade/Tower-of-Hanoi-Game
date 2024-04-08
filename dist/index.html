@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="coustom.css">
+    <title>Tower of Hanoi Game</title>
+</head>
+<body>
+    <div id="startGame" class="bg-[url('/images/welcome.jpg')] bg-cover bg-center flex-col flex items-center justify-center h-screen">
+        <p class="font-bold text-[4rem] p-4">TOWER OF HANOI</p>
+        <button class="bg-slate-700 text-white p-4 rounded-full hover:bg-slate-900" onclick="startTheGame()">START THE GAME</button>
+    </div>
+
+    <div id="openingPopUp" class="bg-[url('/images/front.png')] bg-cover bg-center bg-no-repeat h-screen hidden w-full">
+        <div class="place-content-center min-h-full">
+            <div class="flex justify-center font-bold text-7xl">
+                <span class="text-[#5b877a]"> Tower of Hanoi</span>
+            </div>
+            <div class="flex justify-center p-5 text-[40px]">
+                <p> <span class="text-slate-400 font-semibold">GAME MODE</span></p>
+            </div>  
+            <div class="flex justify-center gap-[50px] pt-3 font-medium">
+                <button onclick="chooseTheNumOfDisk('forBegineer')" class="bg-[#7dd3fc] hover:bg-[#0284c7] px-4 py-2 text-center rounded-full">Begineer</button>
+                <button onclick="chooseTheNumOfDisk('forIntermediate')"class="bg-[#7dd3fc] hover:bg-[#0284c7] px-4 py-2 text-center rounded-full">Intermediate</button>
+                <button onclick="optionChoosePopUp('diskCreate')"class="bg-[#7dd3fc] hover:bg-[#0284c7] px-4 py-2 text-center rounded-full">Advance</button>
+            </div>    
+        </div>
+    </div>
+
+    <div id="chooseTheDisk" class="hidden bg-[url('/images/Choose.jpg')] bg-cover bg-no-repeat bg-center">
+        <div class="flex flex-col items-center justify-center h-screen">
+            <p id="textOfChooseDisk" class="text-[25px] font-bold p-4">Select  Number Of Disk</p>
+            <input type="number" id="numInput" min="6" max="20" class="rounded-full">
+                <div id="choosebtn" class="p-2 rounded-full flex justify-center gap-6 pt-6">
+                    <button onclick="chooseTheNumOfDisk('forAdvance')"class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full px-2">Create</button>
+                    <button onclick="optionChoosePopUp('cancel')" class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full px-2" >Cancel</button>
+                </div>
+        </div>
+    </div>
+    
+    <div id="gamePlayZone" class="gamezone hidden bg-[url('/images/gamebg.jpg')] h-screen bg-cover bg-center bg-no-repeat ">
+        <div class="flex flex-col place-content-center justify-center items-center align-middle h-screen ">
+            <div id="backbutton" style="display: flex; justify-content: center; padding: 20px 0 20px 0;">
+                <button onclick="backButton()" class="bg-slate-100 hover:bg-slate-400 rounded-full w-[80px] p-1">⬅️Back</button>
+            </div>
+            <div id="main" class="min-h-[400px] flex items-center justify-center gap-5">
+                <div id="PointOne" tabindex="0" class="bg-gradient-to-r from-slate-900 to-slate-700/25 border-2 border-red-200/50 backdrop-blur-sm drop-shadow-2xl">
+                    <ul id="P1" class="flex flex-col items-center px-2"> 
+                    </ul>
+                </div>
+    
+                <div id="PointTwo" tabindex="0" class="bg-gradient-to-r from-slate-900 to-slate-700/25 border-2 border-red-200/50 backdrop-blur-sm drop-shadow-2xl"> 
+                    <ul id="P2" class="flex flex-col items-center px-2">
+                    </ul>
+                </div>
+    
+                <div id="PointThree" tabindex="0" class="bg-gradient-to-r from-slate-900 to-slate-700/25 border-2 border-red-200/50 backdrop-blur-sm   drop-shadow-2xl"> 
+                    <ul id="P3" class="flex flex-col items-center px-2">
+                    </ul>
+                </div>
+            </div>
+            <div id="counter" class="hidden justify-center font-medium py-4">
+                <p class="bg-gradient-to-r from-rose-300 to-green-300 px-3 rounded-3xl">
+                    Moves: 
+                    <a id="counts">0</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="popupss" class="bg-[url('/images/winner.jpg')] bg-cover bg-center h-screen w-full hidden place-content-center">
+        <div id="show" class="flex flex-col place-content-center">
+            <p class="text-white text-[40px] flex place-content-center justify-center">
+                <b>Congratulations</b>
+                <p class="text-white text-[40px]">
+                    <b>On your well-deserved success.</b>
+                </p>
+            </p>
+            <div class="text-white flex place-content-center gap-10 p-6">
+                <button style="height: 30px; width: 110px;" onclick="playAgain()" class="bg-slate-400 rounded-full hover:bg-slate-600">Play Again</button>
+                <button style="height: 30px; width: 110px;" onclick="closePopUp()" class="bg-slate-400 rounded-full hover:bg-slate-600">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
